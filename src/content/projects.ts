@@ -136,7 +136,14 @@ export const projects: ProjectCaseStudy[] = [
     links: {
       github: "https://github.com/Aboody241",
     },
-    screenshots: [],
+    screenshots: [
+      "/projects/brainbox-ai/onboarding.png",
+      "/projects/brainbox-ai/login.png",
+      "/projects/brainbox-ai/home.png",
+      "/projects/brainbox-ai/chat.png",
+      "/projects/brainbox-ai/recent_chat.png",
+      "/projects/brainbox-ai/profile.png",
+    ],
     featured: true,
   },
   {
