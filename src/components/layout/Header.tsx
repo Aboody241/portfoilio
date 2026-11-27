@@ -19,7 +19,7 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-bg-1/90 backdrop-blur-md border-b border-grey/60">
+    <header className="relative z-40 bg-bg-1 border-b border-grey/60">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 h-20 flex items-center justify-between gap-4">
         <Link
           href="/#hero"
