@@ -37,9 +37,9 @@ export function WorksSection() {
   const { projectIndex: activeIndex, shotIndex } = steps[stepIndex];
   const project = projects[activeIndex];
 
-  // Pin only when motion is allowed and the screen is tall enough
+  // Pin only on desktop when motion is allowed and the screen is tall enough
   useEffect(() => {
-    const query = window.matchMedia("(min-height: 600px)");
+    const query = window.matchMedia("(min-width: 1024px) and (min-height: 600px)");
     const update = () => setPinned(query.matches && !reduceMotion);
     update();
     query.addEventListener("change", update);
@@ -290,7 +290,7 @@ export function WorksSection() {
             </div>
           </div>
 
-          <div className="relative flex items-center gap-5 mt-12">
+          <div className="relative flex items-center gap-5 mt-4 lg:mt-12">
             <button type="button" aria-label="Previous project" onClick={() => goTo(activeIndex - 1)} className={arrowClass}>
               <ChevronLeft className="w-5 h-5" />
             </button>

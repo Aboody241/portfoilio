@@ -21,8 +21,8 @@ export function ModuleTitle({ title, subtitle, id }: ModuleTitleProps) {
       transition={{ duration: 0.45, ease: "easeOut" }}
       className="flex flex-col items-center text-center mb-12 md:mb-16"
     >
-      {/* Scroll / mouse indicator from Component.png */}
-      <div className="flex flex-col items-center mb-6" aria-hidden="true">
+      {/* Scroll / mouse indicator from Component.png (hidden on mobile) */}
+      <div className="hidden md:flex flex-col items-center mb-6" aria-hidden="true">
         <div className="w-6 h-10 rounded-full border-2 border-brand-1 flex items-start justify-center p-1.5 shadow-[0_0_12px_rgba(18,247,214,0.25)]">
           <motion.span
             animate={shouldReduceMotion ? undefined : { y: [0, 8, 0] }}
