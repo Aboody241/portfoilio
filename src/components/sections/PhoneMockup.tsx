@@ -74,38 +74,62 @@ export function PhoneMockup({
             ? { scale: 1, rotateX: 0, rotateY: 0, rotateZ: 0 }
             : { scale, rotateX, rotateY, rotateZ, transformPerspective: 1100 }
         }
-        className="relative h-[44svh] md:h-[min(62svh,580px)] aspect-[9/18.5] rounded-[36px] bg-bg-1 border-2 border-grey p-2 shadow-[0_30px_70px_rgba(0,0,0,0.6)] will-change-transform"
+        className="relative h-[44svh] md:h-[min(62svh,580px)] aspect-[9/19.5] rounded-[46px] p-[2px] bg-gradient-to-b from-[#f2efe9] via-[#c9c5bd] to-[#e6e2da] shadow-[0_30px_70px_rgba(0,0,0,0.65),0_0_0_1px_rgba(255,255,255,0.12)] will-change-transform"
       >
+        {/* Side hardware buttons */}
         <div
           aria-hidden="true"
-          className="absolute left-1/2 top-4 z-10 h-4 w-16 -translate-x-1/2 rounded-full bg-black"
+          className="absolute -left-[3px] top-[19%] h-[4.2%] w-[3px] rounded-l-sm bg-gradient-to-b from-[#e8e5de] via-[#a8a49c] to-[#d8d4cc]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute -left-[3px] top-[26.5%] h-[7%] w-[3px] rounded-l-sm bg-gradient-to-b from-[#e8e5de] via-[#a8a49c] to-[#d8d4cc]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute -left-[3px] top-[35.5%] h-[7%] w-[3px] rounded-l-sm bg-gradient-to-b from-[#e8e5de] via-[#a8a49c] to-[#d8d4cc]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute -right-[3px] top-[29%] h-[10.5%] w-[3px] rounded-r-sm bg-gradient-to-b from-[#e8e5de] via-[#a8a49c] to-[#d8d4cc]"
         />
 
-        <div className="relative h-full w-full overflow-hidden rounded-[28px] bg-bg-2">
-          {screenshots.length > 0 ? (
-            // All images stay stacked so they can cross-fade
-            screenshots.map((src, idx) => (
-              <Image
-                key={`${src}-${idx}`}
-                src={src}
-                alt={idx === safeIndex ? `${title} screenshot ${idx + 1}` : ""}
-                aria-hidden={idx !== safeIndex}
-                fill
-                sizes="(max-width: 768px) 230px, 300px"
-                className={`object-cover transition-opacity duration-500 motion-reduce:transition-none ${
-                  idx === safeIndex ? "opacity-100" : "opacity-0"
-                }`}
-              />
-            ))
-          ) : (
-            <div className="flex h-full flex-col items-center justify-center gap-3 px-4 text-center">
-              <div className="font-mono text-4xl font-bold text-brand-1">&lt;/&gt;</div>
-              <p className="text-base font-medium leading-snug text-white">{title}</p>
-              <p className="font-mono text-[11px] tracking-wide text-brand-2/80">
-                Preview coming soon
-              </p>
-            </div>
-          )}
+        {/* Inner black bezel */}
+        <div className="relative h-full w-full rounded-[44px] bg-[#0a0a0c] p-[6px] shadow-[inset_0_0_2px_rgba(255,255,255,0.15)]">
+          {/* Dynamic Island */}
+          <div
+            aria-hidden="true"
+            className="absolute left-1/2 top-[17px] z-10 flex h-[22px] w-[80px] -translate-x-1/2 items-center justify-start rounded-full bg-black px-2.5 shadow-[0_0_0_0.5px_rgba(255,255,255,0.06)]"
+          >
+            <span className="h-[8px] w-[8px] rounded-full bg-[#121629] ring-1 ring-[#1f2642]/70" />
+          </div>
+
+          <div className="relative h-full w-full overflow-hidden rounded-[38px] bg-bg-2">
+            {screenshots.length > 0 ? (
+              // All images stay stacked so they can cross-fade
+              screenshots.map((src, idx) => (
+                <Image
+                  key={`${src}-${idx}`}
+                  src={src}
+                  alt={idx === safeIndex ? `${title} screenshot ${idx + 1}` : ""}
+                  aria-hidden={idx !== safeIndex}
+                  fill
+                  sizes="(max-width: 768px) 230px, 300px"
+                  className={`object-cover transition-opacity duration-500 motion-reduce:transition-none ${
+                    idx === safeIndex ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              ))
+            ) : (
+              <div className="flex h-full flex-col items-center justify-center gap-3 px-4 text-center">
+                <div className="font-mono text-4xl font-bold text-brand-1">&lt;/&gt;</div>
+                <p className="text-base font-medium leading-snug text-white">{title}</p>
+                <p className="font-mono text-[11px] tracking-wide text-brand-2/80">
+                  Preview coming soon
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       </motion.div>
 

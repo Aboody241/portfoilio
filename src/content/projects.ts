@@ -42,7 +42,14 @@ export const projects: ProjectCaseStudy[] = [
     links: {
       github: "https://github.com/Aboody241",
     },
-    screenshots: [],
+    screenshots: [
+      "/projects/taskflow/onboarding.png",
+      "/projects/taskflow/login.png",
+      "/projects/taskflow/home.png",
+      "/projects/taskflow/tasks.png",
+      "/projects/taskflow/darkmode.png",
+      "/projects/taskflow/profile.png",
+    ],
     featured: true,
   },
   {
