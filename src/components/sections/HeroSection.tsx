@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useSyncExternalStore } from "react";
+import Image from "next/image";
 import { animate, motion, useReducedMotion } from "motion/react";
 import { Briefcase, Download, Mail, MapPin } from "lucide-react";
 import { GitHubIcon } from "@/components/ui/GitHubIcon";
@@ -102,10 +103,15 @@ export function HeroSection() {
             className="mx-auto w-full max-w-[341px] bg-bg-1 border-2 border-white/90 rounded-tl-[120px] rounded-br-[120px] rounded-tr-2xl rounded-bl-2xl px-6 pt-6 pb-9 shadow-[-4px_-4px_0_0_#12F7D6] transition-shadow duration-300 hover:shadow-[-6px_-6px_0_0_#12F7D6,0_16px_36px_rgba(0,0,0,0.35)]"
           >
             <div className="flex flex-col items-center text-center mb-5">
-              <div className="w-24 h-24 rounded-full border-2 border-brand-1 bg-bg-2 flex items-center justify-center mb-3 shadow-[0_0_20px_rgba(18,247,214,0.2)]">
-                <span className="font-mono text-2xl font-medium text-brand-1">
-                  AE
-                </span>
+              <div className="w-24 h-24 rounded-full border-2 border-brand-1 bg-bg-2 overflow-hidden flex items-center justify-center mb-3 shadow-[0_0_20px_rgba(18,247,214,0.2)]">
+                <Image
+                  src="/images/backgrounds/avatar.jpg"
+                  alt={profile.name}
+                  width={96}
+                  height={96}
+                  priority
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h2 className="font-mono text-2xl font-medium text-white">
                 {profile.shortName}
