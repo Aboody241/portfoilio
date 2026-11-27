@@ -2,6 +2,12 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import {
+  motion,
+  useMotionValueEvent,
+  useReducedMotion,
+  useScroll,
+} from "motion/react";
 import { Mail, Menu, X } from "lucide-react";
 import { GitHubIcon } from "@/components/ui/GitHubIcon";
 import { profile } from "@/content/profile";
@@ -17,9 +23,36 @@ const navLinks = [
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const { scrollY } = useScroll();
+  const shouldReduceMotion = useReducedMotion();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    if (mobileOpen) {
+      setHidden(false);
+      return;
+    }
+    if (latest <= 60) {
+      setHidden(false);
+    } else if (latest > previous && latest > 80) {
+      setHidden(true);
+    } else if (latest < previous) {
+      setHidden(false);
+    }
+  });
 
   return (
-    <header className="relative z-40 bg-bg-1 border-b border-grey/60">
+    <motion.header
+      initial={false}
+      animate={hidden ? { y: "-100%", opacity: 0 } : { y: "0%", opacity: 1 }}
+      transition={
+        shouldReduceMotion
+          ? { duration: 0 }
+          : { duration: 0.25, ease: [0.22, 1, 0.36, 1] }
+      }
+      className="sticky top-0 z-40 bg-bg-1/90 backdrop-blur-md border-b border-grey/60"
+    >
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 h-20 flex items-center justify-between gap-4">
         <Link
           href="/#hero"
@@ -97,6 +130,6 @@ export function Header() {
           ))}
         </nav>
       )}
-    </header>
+    </motion.header>
   );
 }
